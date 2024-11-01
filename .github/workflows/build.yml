@@ -19,9 +19,6 @@ jobs:
       - name: Ejecutar pruebas y generar cobertura
         run: |
           npm run test:cov
-      - name: Convertir cobertura de Jest a formato compatible con Sonar
-        run: |
-          npx jest --coverage --coverageReporters=cobertura
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
