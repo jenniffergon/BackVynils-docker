@@ -16,17 +16,15 @@ jobs:
       - name: Instalación de dependencias
         run: |
           npm install
-      - name: Crear directorio de cobertura
-        run: mkdir -p coverage
-      - name: Ejecutar pruebas y generar cobertura
+      - name: Ejecutar pruebas y generar cobertura en JSON
         run: |
-          npx jest --config jest.config.js --coverage --runInBand --verbose
-      - name: Verificar archivos de cobertura
+          npx jest --config jest.config.js --coverage --coverageReporters=json-summary --runInBand --showConfig
+      - name: Verificar archivos de cobertura JSON
         run: |
           ls -R coverage
-      - name: Mostrar contenido de lcov.info
+      - name: Mostrar contenido de coverage-summary.json
         run: |
-          cat coverage/lcov.info || echo "lcov.info no encontrado"
+          cat coverage/coverage-summary.json || echo "coverage-summary.json no encontrado"
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
