@@ -16,12 +16,11 @@ jobs:
       - name: Instalación de dependencias
         run: |
           npm install
-      - name: Verificar archivos en el directorio principal
-        run: |
-          ls -R
+      - name: Crear directorio de cobertura
+        run: mkdir -p coverage
       - name: Ejecutar pruebas y generar cobertura
         run: |
-          npx jest --coverage
+          npx jest --coverage --coverageDirectory=coverage
       - name: Verificar archivos de cobertura
         run: |
           ls -R coverage
