@@ -11,7 +11,6 @@ module.exports = {
     ],
     coverageDirectory: "coverage",
     coverageReporters: ["json", "lcov", "text", "clover"],
-    testEnvironment: "node",
-    globalSetup: "../jest.setup.js"
+    testEnvironment: "node"
   };
   
