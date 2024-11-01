@@ -20,13 +20,13 @@ jobs:
         run: mkdir -p coverage
       - name: Ejecutar pruebas y generar cobertura
         run: |
-          npx jest --coverage --coverageReporters=lcov --coverageDirectory=coverage
+          npx jest --config jest.config.js --coverage --verbose
       - name: Verificar archivos de cobertura
         run: |
           ls -R coverage
       - name: Mostrar contenido de lcov.info
         run: |
-          cat coverage/lcov.info
+          cat coverage/lcov.info || echo "lcov.info no encontrado"
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
