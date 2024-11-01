@@ -42,16 +42,14 @@ export class CollectorPerformerService {
     async deleteCollectorPerformer(collectorId: number, performerId: number): Promise<CollectorDTO> {
         const collector = await this.collectorRepository.findOne(collectorId, { relations: ["favoritePerformers"] });
         if (!collector)
-            throw new BusinessLogicException("The collector with the given id was not found", BusinessError.NOT_FOUND)
-
+            throw new BusinessLogicException("The collector with the given id was not found", BusinessError.NOT_FOUND);
+    
         const performer = await this.performerRepository.findOne(performerId);
         if (!performer)
-            throw new BusinessLogicException("The performer with the given id was not found", BusinessError.NOT_FOUND)
-
-        collector.favoritePerformers.filter(e => e.id !== performerId)
-
+            throw new BusinessLogicException("The performer with the given id was not found", BusinessError.NOT_FOUND);
+    
+        collector.favoritePerformers = collector.favoritePerformers.filter(e => e.id !== performerId);
+    
         return await this.collectorRepository.save(collector);
     }
-
-
 }
