@@ -13,12 +13,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Instalación de dependencias
-        run: |
-          npm install
-      - name: Ejecutar pruebas y generar cobertura
-        run: |
-          npm run test:cov
+      - name: Install dependencies
+        run: yarn
+      - name: Test and coverage
+        run: yarn jest --coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
