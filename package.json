@@ -68,10 +68,6 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node",
-    "coverageReporters": [
-      "html",
-      "lcov"
-    ]
+    "testEnvironment": "node"
   }
 }
