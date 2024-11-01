@@ -10,7 +10,7 @@ module.exports = {
       "**/*.(t|j)s"
     ],
     coverageDirectory: "coverage",
-    coverageReporters: ["lcov"],
+    coverageReporters: ["json", "lcov", "text", "clover"],
     testEnvironment: "node",
   };
   
