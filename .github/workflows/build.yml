@@ -12,18 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis      
+          fetch-depth: 0
       - name: Instalación de dependencias
         run: |
           npm install
+      - name: Verificar archivos en el directorio principal
+        run: |
+          ls -R
       - name: Ejecutar pruebas y generar cobertura
         run: |
-          npm run test:cov
+          npx jest --coverage
       - name: Verificar archivos de cobertura
         run: |
-          ls -R coverage        
+          ls -R coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
