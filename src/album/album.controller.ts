@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Body, Param, Put, Delete, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Body, Param, Put, Delete, UseInterceptors, Patch } from '@nestjs/common';
 import { AlbumService } from './album.service';
 import { AlbumDTO } from './album.dto';
 
@@ -27,6 +27,11 @@ export class AlbumController {
     @Put(':albumId')
     async update(@Param('albumId') albumId: number, @Body() albumDTO: AlbumDTO) {
         return await this.albumService.update(albumId, albumDTO);
+    }
+
+    @Patch(':albumId')
+    async (@Param('albumId') albumId: number, @Body() albumDTO: AlbumDTO) {
+        return this.albumService.update(albumId, albumDTO);
     }
 
     @Delete(':albumId')
