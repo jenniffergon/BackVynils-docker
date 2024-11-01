@@ -18,9 +18,6 @@ jobs:
           npm install
       - name: Crear directorio de cobertura
         run: mkdir -p coverage
-      - name: Ejecutar pruebas y generar cobertura
-        run: |
-          npx jest --config jest.config.js --coverage --runInBand --verbose
       - name: Ejecutar pruebas y generar cobertura 2
         run: |
           npx jest --coverage
