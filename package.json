@@ -67,7 +67,7 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "./coverage",
     "coverageReporters": ["json", "lcov", "text", "clover"], 
     "testEnvironment": "node"
   }
